@@ -1,7 +1,5 @@
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 20px;
+.app-container {
+  display: flex;
   min-height: 100vh;
   background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
   color: #fff;
@@ -9,7 +7,142 @@
   overflow: hidden;
 }
 
-.container::before {
+.emergency-sidebar {
+  width: 320px;
+  background: rgba(20, 20, 20, 0.95);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+}
+
+.emergency-header {
+  font-size: 20px;
+  font-weight: 600;
+  color: #ff4d4d;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 77, 77, 0.3);
+}
+
+.alerts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.alert-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.2s;
+}
+
+.alert-card:hover {
+  transform: translateY(-2px);
+}
+
+.alert-card.high {
+  border-left: 4px solid #ff4d4d;
+}
+
+.alert-card.medium {
+  border-left: 4px solid #ffa500;
+}
+
+.alert-card.low {
+  border-left: 4px solid #2ecc71;
+}
+
+.alert-title {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.alert-location {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.alert-time {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 8px;
+}
+
+.alert-details {
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.emergency-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.emergency-button {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.emergency-button.call {
+  background: #ff4d4d;
+}
+
+.emergency-button.sos {
+  background: #ffa500;
+}
+
+.emergency-button.sos.active {
+  background: #ff4d4d;
+  animation: pulse 1s infinite;
+}
+
+.emergency-button.evacuation {
+  background: #2ecc71;
+}
+
+.emergency-button.resources {
+  background: #3498db;
+}
+
+.emergency-button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.app-container::before {
   content: '';
   position: absolute;
   top: 0;
