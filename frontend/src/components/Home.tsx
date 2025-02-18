@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { generateText } from '../services/api';
+import './Home.css';
 
 const Home: React.FC = () => {
   const [prompt, setPrompt] = useState('');
@@ -24,12 +25,11 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4">FireAI Assistant</h1>
-      <form onSubmit={handleSubmit} className="mb-4">
-        <div className="mb-4">
+    <div className="container">
+      <h1>FireAI Assistant</h1>
+      <form onSubmit={handleSubmit}>
+        <div className="input-group">
           <textarea
-            className="w-full p-2 border rounded"
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             placeholder="Enter your prompt here..."
@@ -39,21 +39,21 @@ const Home: React.FC = () => {
         <button
           type="submit"
           disabled={loading || !prompt}
-          className="bg-blue-500 text-white px-4 py-2 rounded disabled:bg-gray-400"
+          className={loading ? 'button loading' : 'button'}
         >
           {loading ? 'Generating...' : 'Generate'}
         </button>
       </form>
       
       {error && (
-        <div className="text-red-500 mb-4">
+        <div className="error-message">
           {error}
         </div>
       )}
       
       {response && (
-        <div className="bg-gray-100 p-4 rounded">
-          <h2 className="font-bold mb-2">Response:</h2>
+        <div className="response-container">
+          <h2>Response:</h2>
           <p>{response}</p>
         </div>
       )}
