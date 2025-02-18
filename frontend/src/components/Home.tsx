@@ -26,37 +26,49 @@ const Home: React.FC = () => {
 
   return (
     <div className="container">
-      <h1>FireAI Assistant</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="input-group">
-          <textarea
-            value={prompt}
-            onChange={(e) => setPrompt(e.target.value)}
-            placeholder="Enter your prompt here..."
-            rows={4}
-          />
+      <div className="header">
+        <div className="logo">
+          <span className="logo-icon">🔥</span>
         </div>
-        <button
-          type="submit"
-          disabled={loading || !prompt}
-          className={loading ? 'button loading' : 'button'}
-        >
-          {loading ? 'Generating...' : 'Generate'}
-        </button>
-      </form>
-      
-      {error && (
-        <div className="error-message">
-          {error}
+        <h1>FireAI Assistant</h1>
+        <div className="status-indicator">
+          <span className="status-dot"></span>
+          Ready to Help
         </div>
-      )}
-      
-      {response && (
-        <div className="response-container">
-          <h2>Response:</h2>
-          <p>{response}</p>
-        </div>
-      )}
+      </div>
+
+      <div className="chat-container">
+        <form onSubmit={handleSubmit}>
+          <div className="input-group">
+            <textarea
+              value={prompt}
+              onChange={(e) => setPrompt(e.target.value)}
+              placeholder="Ask about emergency response, fire prediction, or disaster preparedness..."
+              rows={4}
+            />
+          </div>
+          <button
+            type="submit"
+            disabled={loading || !prompt}
+            className={loading ? 'button loading' : 'button'}
+          >
+            {loading ? '' : 'Ask FireAI'}
+          </button>
+        </form>
+        
+        {error && (
+          <div className="error-message">
+            <span role="img" aria-label="warning">⚠️</span> {error}
+          </div>
+        )}
+        
+        {response && (
+          <div className="response-container">
+            <h2><span role="img" aria-label="ai">🤖</span> AI Response</h2>
+            <p>{response}</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
